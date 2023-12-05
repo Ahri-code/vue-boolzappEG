@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boolzapp</title>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/utility.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+</head>
+<body>
+    <div id="container" class="flex jc-center ai-center c-white">
+        <div id="app" class="flex">
+            <!-- Chat List -->
+            <div id="chat-list" class="flex fd-column">
+                <!-- Header -->
+                <div class="header flex ai-center jc-between">
+                    <!-- Left side -->
+                    <div class="flex ai-center">   
+                        <img src="./img/avatar_io.jpg" class="std-img">
+                        <p class="pl-05">
+                            Sofia
+                        </p>
+                    </div>
+                    <!-- Right side -->
+                    <div class="flex ai-center">
+                        <i class="fa-solid fa-circle-notch pl-1 icon"></i>
+                        <i class="fa-solid fa-message pl-1 icon"></i>
+                        <i class="fa-solid fa-ellipsis-vertical pl-1 icon"></i>
+                    </div>
+                </div>
+                <!-- App notification -->
+                <div id="notification" class="flex ai-center p-0-1">
+                    <div class="flex jc-center ai-center" id="bell">
+                        <i class="fa-solid fa-bell-slash icon"></i>
+                    </div>
+                    <div class="pl-1">
+                        <p>
+                            Ricevi notifiche di nuovi messaggi
+                        </p>
+                        <a href="#">
+                            <small>
+                                Attiva notifiche desktop
+                            </small>
+                        </a>
+                    </div>
+                </div>
+                <!-- Search -->
+                <div id="search-section" class="flex jc-center ai-center">
+                    <div id="search-bar" class="flex ai-center p-0-1">
+                        <button class="fa-solid fa-magnifying-glass"></button>
+                        <input v-model="search" name="search-result" id="search-input" placeholder="Cerca o inizia una nuova chat" @change="filter">
+                    </div>
+                </div>
+                <!-- Chats -->
+                <div id="chats-container" class="p-0-1">
+                    <div v-for="(chat, i) in contacts" class="chats flex jc-between ai-center" @click="chatButton(i)" :class="(i == this.number) ? 'active' : '', (contacts.visible == false) ? 'remove' : ''">
+                        <div class="flex ai-center">
+                            <img :src="chat.avatar" class="std-img">
+                            <div class="pl-1 as-start">
+                                <p>
+                                    {{chat.name}}
+                                </p>
+                                <p>
+                                    <small>
+                                        Ultimo messaggio inviato
+                                    </small>
+                                </p>
+                            </div>
+                        </div>
+                            
+                        <div class="as-start">
+                            <p>
+                                <small>
+                                    12:00
+                                </small>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Selected chat -->
+            <div id="sel-chat" class="flex fd-column">
+                <!-- Top -->
+                <div id="chat-header" class="header flex ai-center jc-between">
+                    <!-- Left side -->
+                    <div class="flex ai-center jc-between">
+                        <div class="flex ai-center">
+                            <img :src="contacts[number].avatar" class="std-img">
+                            <div class="pl-05 as-start">    
+                                <p>
+                                    {{contacts[number].name}}
+                                </p>
+                                <p>
+                                    <small>
+                                        Ultimo accesso oggi alle 12:00
+                                    </small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Right side -->
+                    <div>
+                        <i class="fa-solid fa-magnifying-glass pl-1 icon"></i>
+                        <i class="fa-solid fa-paperclip pl-1 icon"></i>
+                        <i class="fa-solid fa-ellipsis-vertical pl-1 icon"></i>
+                    </div>
+                </div>
+                <!-- Center -->
+                <div id="chat-show">
+                    <div v-for="text in contacts[number].messages" class="message-row flex ai-center p-1" :class="(text.status == 'sent')? 'js-end' : 'js-start'">
+                        <div class="message-display flex ai-center p-05" :class="(text.status == 'sent')? 'message-sent' : 'message-receved'">
+                            <p>
+                                {{text.message}}
+                            </p>
+                            <p class="js-end as-end pl-05">
+                                <small>{{text.date.split(' ')[1].slice(0, 5)}}</small>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Bottom -->
+                <div id="chat-send" class="flex ai-center jc-evenly">
+                    <button class="fa-regular fa-face-smile icon"></button>
+                    <textarea v-model="text" @keyup.shift.enter="send" class="p-0-1" name="message-sender" id="send-message" placeholder="Scrivi un messaggio"></textarea>
+                    <button v-if="text == ''" class="fa-solid fa-microphone"></button>
+                    <button v-else class="fa-solid fa-paper-plane" @click="send"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/script.js"></script>
+</body>
+</html>

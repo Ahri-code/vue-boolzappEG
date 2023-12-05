@@ -1,0 +1,192 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* --- GENERAL --- */
+
+#container {
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(
+      to top,
+      #111b21 0%,
+      #111b21 85%,
+      #005c4b 85%,
+      #005c4b 100%
+    );
+}
+
+#app {
+    width: 80%;
+    height: 90vh;
+    background-color: #111b21;
+    box-shadow: 0px 0px 8px 1px #111A20;
+}
+
+.header {
+    min-height: 65px;
+    padding: 0 1rem;
+    background-color: #202c33;
+}
+
+.std-img {
+    display: block;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+
+.icon {
+    font-size: 20px;
+    color: gray;
+}
+
+a {
+    color: #272727c4;
+}
+
+/* --- LEFT-BAR --- */
+
+#chat-list {
+    width: calc(100% / 3);
+}
+
+#notification {
+    min-height: 65px;
+    background-color: #8edafc;
+    color: black;
+}
+
+
+#bell {
+    background-color: white;
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+}
+
+#bell i {
+    color: #8edafc;
+}
+
+#search-section {
+    min-height: 40px;
+}
+
+#search-bar {
+    height: 25px;
+    width: 85%;
+    background-color: #202c33;
+    border-radius: 5px;
+}
+
+#search-bar button {
+    border: 0;
+    height: 25px;
+    width: 10%;
+    background-color: #202c33;
+    color: gray;
+}
+
+#search-bar input {
+    border: 0;
+    height: 25px;
+    width: 90%;
+    background-color: #202c33;
+    color: gray;
+}
+
+#chats-container {
+    height: calc(100% - 65px - 65px- 40px);
+    overflow-y: auto;
+}
+
+#chats-container small {
+    color: gray;
+    font-size: 12px;
+}
+
+.chats {
+    height: 65px;
+    border-top: 1px solid #202c33;
+    border-bottom: 1px solid #202c33;
+}
+
+.remove {
+    display: none;
+}
+
+.active {
+    background-color: #2a3942;
+}
+
+/* --- RIGHT SECTION --- */
+
+#sel-chat {
+    width: calc(100% / 3 * 2);
+    border-left: 1px solid gray;
+}
+
+#chat-header small {
+    color: gray;
+    font-size: 12px;
+}
+
+#chat-show {
+    height: calc(100% - 65px - 65px);
+    background-image: url(../img/mine.jpg);
+    filter: invert(1);
+    overflow-y: auto;
+}
+
+.message-display {
+    max-width: 45%;
+    filter: invert(1);
+    border-radius: 5px;
+}
+
+.message-sent {background-color: #005c4b;}
+
+.message-receved {background-color: #202c33;}
+
+#chat-show small {
+    font-size: 8px;
+    color: gray;
+}
+
+#chat-send {
+    min-height: 65px;
+    background-color: #202c33;
+    color: white;
+}
+
+#chat-send button {
+    font-size: 20px;
+    border: 0;
+    background-color: #202c33;
+    color: gray;
+}
+
+#chat-send input {
+    width: 80%;
+    height: 40px;
+    border: 0;
+    background-color: #2a3942;
+    color: gray;
+    border-radius: 10px;
+}
+
+#send-message {
+    border: 0;
+    background-color: #2a3942;
+    resize: none;
+    overflow: hidden;
+    color: gray;
+    width: 80%;
+    height: 40px;
+    border-radius: 10px;
+    line-height: 20px;
+    padding: 10px 1rem;
+}

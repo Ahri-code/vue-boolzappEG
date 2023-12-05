@@ -1,0 +1,41 @@
+/* --- FLEX --- */
+
+.flex {display: flex;}
+
+.jc-center {justify-content: center;}
+
+.js-end {justify-content: end;}
+
+.js-start {justify-self: start;}
+
+.jc-between {justify-content: space-between;}
+
+.jc-evenly {justify-content: space-evenly;}
+
+.as-start {align-self: start;}
+
+.as-end {align-self: flex-end;}
+
+.ai-center {align-items: center;}
+
+.fd-column {flex-direction: column;}
+
+/* --- COLOR--- */
+
+.c-white {color: white;}
+
+/* --- PADDING --- */
+
+.p-0-05 {padding: 0 0.5rem;}
+
+.p-0-1 {padding: 0 1rem;}
+
+.p-05 {padding: 0.5rem;}
+
+.p-1 {padding: 1rem;}
+
+/* Padding-left */
+
+.pl-05 {padding-left: 0.5rem;}
+
+.pl-1 {padding-left: 1rem;}
